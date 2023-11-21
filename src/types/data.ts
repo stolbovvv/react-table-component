@@ -1,5 +1,5 @@
-// Driver data type
-export type Driver = {
+// Data type
+export type DataType = {
   id: string;
   rfid: number;
   name: string;

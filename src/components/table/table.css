@@ -17,6 +17,10 @@
 }
 .table__head-cel {
   flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
   width: 25%;
   padding: 0.5em 1em;
   border: none;
@@ -25,6 +29,9 @@
   font-weight: var(--fw-4);
   text-align: left;
   cursor: pointer;
+}
+.table__head-cel:not(:first-child) {
+  border-left: 1px solid var(--green-6);
 }
 .table__head-cel:is(:focus, :hover) {
   --background-color: var(--green-4);
@@ -39,8 +46,10 @@
 .table__body-row {
   display: flex;
   cursor: pointer;
-  border-bottom: 1px solid var(--green-6);
   background-color: var(--background-color, transparent);
+}
+.table__body-row:not(:last-child) {
+  border-bottom: 1px solid var(--green-6);
 }
 .table__body-row:is(:focus, :hover) {
   --background-color: var(--green-4);

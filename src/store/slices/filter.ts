@@ -1,16 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { Filter } from 'types/filter';
 
-type FiltersState = {
-  term: string;
-  type: string;
-};
-
-const initialState: FiltersState = {
+const initialState: Filter = {
   term: '',
   type: '',
 };
 
-const { actions, reducer } = createSlice({
+export const { actions, reducer } = createSlice({
   name: 'filters',
   initialState,
   reducers: {
@@ -22,5 +18,3 @@ const { actions, reducer } = createSlice({
     },
   },
 });
-
-export { actions, reducer };
