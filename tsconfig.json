@@ -27,7 +27,8 @@
       "styles/*": ["./src/styles/*"],
       "hooks/*": ["./src/hooks/*"],
       "store/*": ["./src/store/*"],
-      "types/*": ["./src/types/*"]
+      "types/*": ["./src/types/*"],
+      "data/*": ["./src/data/*"]
     }
   },
   "include": ["src"],
