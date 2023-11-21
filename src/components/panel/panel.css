@@ -1,0 +1,58 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  border-radius: var(--radius-2);
+  border: 1px solid var(--green-6);
+  background-color: var(--green-2);
+}
+.panel__title {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-4);
+  line-height: var(--lh-1);
+}
+.panel__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-block: var(--space-1);
+  border-bottom: 1px solid var(--green-6);
+}
+.panel__info-text {
+  font-size: var(--fs-2);
+}
+.panel__menu {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+.panel__menu-input {
+  flex: 1 1 auto;
+  padding: 0.5em;
+  border-radius: var(--radius-1);
+  border: 1px solid var(--green-6);
+  background-color: var(--green-1);
+  outline-color: var(--green-11);
+  font-size: var(--fs-2);
+}
+.panel__menu-button {
+  padding: 0.5em 1em;
+  border-radius: var(--radius-1);
+  border: 1px solid var(--border-color, var(--green-6));
+  background-color: var(--background-color, var(--green-3));
+  outline-color: var(--green-11);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-4);
+  color: var(--green-11);
+  cursor: pointer;
+}
+.panel__menu-button:is(:focus, :hover) {
+  --border-color: var(--green-7);
+  --background-color: var(--green-4);
+}
+.panel__menu-button:is(:active) {
+  --border-color: var(--green-8);
+  --background-color: var(--green-6);
+}

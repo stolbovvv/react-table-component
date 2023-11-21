@@ -1,0 +1,21 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+.footer__text {
+  font-size: var(--fs-2);
+  font-weight: var(--fw-1);
+  color: var(--neutral-11);
+}
+.footer__text a {
+  text-decoration: var(--text-decoration, none);
+  color: var(--color, var(--green-11));
+}
+.footer__text a:is(:focus, :hover) {
+  --text-decoration: underline;
+}
+.footer__text a:is(:active) {
+  --color: var(--green-12);
+}

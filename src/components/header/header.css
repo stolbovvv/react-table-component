@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.header__logo-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  object-position: center;
+}
+.header__logo-text {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-5);
+  font-family: var(--ff-accent);
+}
+.header__menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}

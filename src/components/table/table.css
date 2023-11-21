@@ -1,0 +1,56 @@
+.table {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-2);
+  border: 1px solid var(--green-6);
+  background-color: var(--green-2);
+  overflow: hidden;
+}
+.table__head {
+  display: flex;
+  flex-direction: column;
+}
+.table__head-row {
+  display: flex;
+  border-bottom: 1px solid var(--green-6);
+}
+.table__head-cel {
+  flex: 0 0 auto;
+  width: 25%;
+  padding: 0.5em 1em;
+  border: none;
+  background-color: var(--background-color, var(--green-3));
+  font-size: var(--fs-2);
+  font-weight: var(--fw-4);
+  text-align: left;
+  cursor: pointer;
+}
+.table__head-cel:is(:focus, :hover) {
+  --background-color: var(--green-4);
+}
+.table__head-cel:is(:active) {
+  --background-color: var(--green-6);
+}
+.table__body {
+  display: flex;
+  flex-direction: column;
+}
+.table__body-row {
+  display: flex;
+  cursor: pointer;
+  border-bottom: 1px solid var(--green-6);
+  background-color: var(--background-color, transparent);
+}
+.table__body-row:is(:focus, :hover) {
+  --background-color: var(--green-4);
+}
+.table__body-row:is(:active) {
+  --background-color: var(--green-6);
+}
+.table__body-cel {
+  flex: 0 0 auto;
+  width: 25%;
+  padding: 0.5em 1em;
+  font-size: var(--fs-2);
+}

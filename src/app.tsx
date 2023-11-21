@@ -1,8 +1,18 @@
+import { Header } from 'components/header/header';
+import { Footer } from 'components/footer/footer';
+import { Panel } from 'components/panel/panel';
+import { Table } from 'components/table/table';
+
 function App() {
   return (
-    <div className="app">
-      <h1>Hello</h1>
-    </div>
+    <>
+      <Header />
+      <main>
+        <Panel />
+        <Table />
+      </main>
+      <Footer />
+    </>
   );
 }
 

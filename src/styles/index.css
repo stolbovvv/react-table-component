@@ -97,13 +97,13 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding: var(--space-2);
+  padding: var(--space-5);
   max-width: min(100%, 120rem);
   min-height: 100vh;
 }
 
 .wrapper > * + * {
-  margin-top: var(--space-2);
+  margin-top: var(--space-5);
 }
 
 .wrapper > header,
@@ -118,5 +118,5 @@ body {
 }
 
 .wrapper > main > * + * {
-  margin-top: var(--space-2);
+  margin-top: var(--space-5);
 }
