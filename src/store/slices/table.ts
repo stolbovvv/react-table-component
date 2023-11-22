@@ -1,12 +1,12 @@
-import type { DataType } from 'types/data';
-import type { TableType } from 'types/table';
+import type { TableData, TableState } from 'types/table';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 import { data } from 'data/data.json';
 
-const initialState: TableType = {
+const initialState: TableState = {
   data: data,
   sort: {
-    field: null,
+    field: 'name',
     order: 'acs',
   },
   cells: [
@@ -22,7 +22,7 @@ export const { actions, reducer } = createSlice({
   name: 'table',
   initialState,
   reducers: {
-    sort: (state, action: PayloadAction<{ field: keyof DataType }>) => {
+    sort: (state, action: PayloadAction<{ field: keyof TableData }>) => {
       const _order = state.sort.order;
       const _field = state.sort.field;
 
@@ -45,6 +45,19 @@ export const { actions, reducer } = createSlice({
 
         return 0;
       });
+    },
+    addItem: (state, action: PayloadAction<{ data: TableData }>) => {
+      state.data.push({ ...action.payload.data, id: uuidv4() });
+    },
+    updateItem: (state, action: PayloadAction<{ data: TableData }>) => {
+      const update: TableData[] = state.data.map((item: TableData): TableData => {
+        if (item.id === action.payload.data.id) {
+          return action.payload.data;
+        }
+        return item;
+      });
+
+      state.data = update;
     },
   },
 });

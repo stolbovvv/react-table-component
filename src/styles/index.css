@@ -40,6 +40,19 @@
   --green-11: #218358;
   --green-12: #193b2d;
 
+  --black-a1: rgba(0, 0, 0, 0.05);
+  --black-a2: rgba(0, 0, 0, 0.1);
+  --black-a3: rgba(0, 0, 0, 0.15);
+  --black-a4: rgba(0, 0, 0, 0.2);
+  --black-a5: rgba(0, 0, 0, 0.3);
+  --black-a6: rgba(0, 0, 0, 0.4);
+  --black-a7: rgba(0, 0, 0, 0.5);
+  --black-a8: rgba(0, 0, 0, 0.6);
+  --black-a9: rgba(0, 0, 0, 0.7);
+  --black-a10: rgba(0, 0, 0, 0.8);
+  --black-a11: rgba(0, 0, 0, 0.9);
+  --black-a12: rgba(0, 0, 0, 0.95);
+
   --ff-accent: 'Roboto Slab Variable', serif;
   --ff-neutral: 'Inter Variable', sans-serif;
 
@@ -99,7 +112,7 @@ body {
   margin: 0 auto;
   padding: var(--space-5);
   max-width: min(100%, 120rem);
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .wrapper > * + * {
@@ -115,6 +128,7 @@ body {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .wrapper > main > * + * {

@@ -1,5 +1,5 @@
 // Filter type
-export type FilterType = {
+export type FilterState = {
   term: string;
   type: string;
 };

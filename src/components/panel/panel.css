@@ -38,6 +38,9 @@
   font-size: var(--fs-2);
 }
 .panel__menu-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
   padding: 0.5em 1em;
   border-radius: var(--radius-1);
   border: 1px solid var(--border-color, var(--green-6));

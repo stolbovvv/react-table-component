@@ -8,6 +8,7 @@
   overflow: hidden;
 }
 .table__head {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
 }
@@ -40,6 +41,7 @@
   --background-color: var(--green-6);
 }
 .table__body {
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 }
@@ -62,4 +64,36 @@
   width: 25%;
   padding: 0.5em 1em;
   font-size: var(--fs-2);
+}
+
+/* Scroll */
+.table__body {
+  position: relative;
+  overflow-x: visible;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #397524 var(--green-2);
+  scrollbar-gutter: stable;
+}
+.table__head-row {
+  padding-right: var(--space-3);
+  background-color: var(--green-3);
+}
+.table__body::-webkit-scrollbar {
+  height: var(--space-3);
+  width: var(--space-3);
+}
+.table__body::-webkit-scrollbar-track {
+  background-color: var(--green-2);
+  border-left: 1px solid var(--green-6);
+}
+.table__body::-webkit-scrollbar-thumb {
+  border-left: 1px solid var(--green-6);
+  background-color: var(--green-4);
+}
+.table__body::-webkit-scrollbar-thumb:hover {
+  background-color: var(--green-4);
+}
+.table__body::-webkit-scrollbar-thumb:active {
+  background-color: var(--green-5);
 }

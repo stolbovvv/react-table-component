@@ -1,19 +1,21 @@
 import './table.css';
 
-import type { DataType } from 'types/data';
-import type { CelType, TableType } from 'types/table';
+import type { TableData } from 'types/table';
+import type { TableCel, TableState } from 'types/table';
 import { useDispatch, useSelector } from 'react-redux';
+import { actions as modalActions } from 'store/slices/modal';
 import { actions as tableActions } from 'store/slices/table';
 import { filteredDataSelector } from 'store/selectors/filtered-data';
 import { CaretSortIcon, CaretUpIcon, CaretDownIcon } from '@radix-ui/react-icons';
+import { useEffect } from 'react';
 
 function Table() {
   const data = useSelector(filteredDataSelector);
-  const sort = useSelector((state: { table: TableType }) => state.table.sort);
-  const cells = useSelector((state: { table: TableType }) => state.table.cells);
+  const sort = useSelector((state: { table: TableState }) => state.table.sort);
+  const cells = useSelector((state: { table: TableState }) => state.table.cells);
   const dispatch = useDispatch();
 
-  const getSortIcon = (field: keyof DataType) => {
+  const getSortIcon = (field: keyof TableData) => {
     if (sort.field !== field) {
       return <CaretSortIcon />;
     } else {
@@ -22,16 +24,24 @@ function Table() {
     }
   };
 
-  const handleSort = (name: keyof DataType) => {
+  const handleSort = (name: keyof TableData) => {
     dispatch(tableActions.sort({ field: name }));
   };
+
+  const showModal = (data: TableData) => {
+    dispatch(modalActions.show({ data }));
+  };
+
+  useEffect(() => {
+    dispatch(tableActions.sort({ field: 'name' }));
+  }, []);
 
   return (
     <section className="table">
       <div className="table__head">
         <div className="table__head-row">
           {cells.map(
-            (cel: CelType) =>
+            (cel: TableCel) =>
               cel.visible && (
                 <button className="table__head-cel" key={cel.name} onClick={() => handleSort(cel.name)}>
                   <span>{cel.text}</span>
@@ -42,10 +52,10 @@ function Table() {
         </div>
       </div>
       <div className="table__body">
-        {data.map((item: DataType) => (
-          <div className="table__body-row" key={item.id}>
+        {data.map((item: TableData) => (
+          <div className="table__body-row" key={item.id} onClick={() => showModal(item)}>
             {cells.map(
-              (cel: CelType) =>
+              (cel: TableCel) =>
                 cel.visible && (
                   <span className="table__body-cel" key={`${cel.name}-${item.id}`}>
                     {item[cel.name]}
