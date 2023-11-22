@@ -29,6 +29,7 @@
   font-size: var(--fs-2);
   font-weight: var(--fw-4);
   text-align: left;
+  color: var(--green-12);
   cursor: pointer;
 }
 .table__head-cel:not(:first-child) {

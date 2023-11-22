@@ -1,13 +1,15 @@
 import './modal.css';
 
+import type { TableData } from 'types/table';
 import type { ModalField, ModalState } from 'types/modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions as modalActions } from 'store/slices/modal';
 import { actions as tableActions } from 'store/slices/table';
-import { CheckCircledIcon, Cross1Icon, CrossCircledIcon } from '@radix-ui/react-icons';
+
+import { CheckCircledIcon, Cross1Icon, CrossCircledIcon, TrashIcon } from '@radix-ui/react-icons';
 
 function Modal() {
-  const { currentData, fields, isChange } = useSelector((store: { modal: ModalState }) => store.modal);
+  const modal = useSelector((store: { modal: ModalState }) => store.modal);
   const dispatch = useDispatch();
 
   const hideModal = () => {
@@ -18,13 +20,24 @@ function Modal() {
     dispatch(modalActions.resetValues());
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, name: keyof TableData) => {
+    dispatch(modalActions.changeValue({ name: name, value: e.target.value }));
+  };
+
+  const handleDelete = () => {
+    dispatch(tableActions.removeItem({ id: modal.currentData.id }));
+
+    hideModal();
+    handleReset();
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (isChange) {
-      dispatch(tableActions.updateItem({ data: currentData }));
+    if (modal.isChange) {
+      dispatch(tableActions.updateItem({ data: modal.currentData }));
     } else {
-      dispatch(tableActions.addItem({ data: currentData }));
+      dispatch(tableActions.addItem({ data: modal.currentData }));
     }
 
     hideModal();
@@ -36,31 +49,39 @@ function Modal() {
       <div className="modal__overlay" onClick={hideModal} />
       <div className="modal__dialog">
         <div className="modal__head">
-          <h2 className="modal__titile">{isChange ? 'Редактировать' : 'Добавить'} запись</h2>
+          <h2 className="modal__titile">{modal.isChange ? 'Редактировать' : 'Добавить'} запись</h2>
           <button className="modal__button-close" onClick={hideModal}>
             <Cross1Icon />
           </button>
         </div>
         <form className="modal__form" onSubmit={handleSubmit}>
           <fieldset className="modal__form-fieldset">
-            {fields.map((field: ModalField) => (
+            {modal.fields.map((field: ModalField) => (
               <div className="modal__form-field" key={`modal-field-${field.name}`}>
-                <label className="modal__form-label">{field.label}</label>
+                <label className="modal__form-label">
+                  {field.label}
+                  {field.required ? '*' : ''}
+                </label>
                 <input
                   className="modal__form-input"
-                  name={field.name}
                   type={field.type}
-                  value={currentData[field.name]}
+                  value={modal.currentData[field.name]}
                   required={field.required}
-                  onChange={(e) => dispatch(modalActions.changeValue({ name: field.name, value: e.target.value }))}
+                  onChange={(e) => handleChange(e, field.name)}
                 />
               </div>
             ))}
           </fieldset>
           <div className="modal__form-foot">
+            {modal.isChange && (
+              <button className="modal__form-button modal__form-button_delete" type="button" onClick={handleDelete}>
+                <TrashIcon />
+                <span>Удалить</span>
+              </button>
+            )}
             <button className="modal__form-button modal__form-button_reset" type="button" onClick={handleReset}>
               <CrossCircledIcon />
-              <span>{isChange ? 'Отменить изменения' : 'Очистить'}</span>
+              <span>{modal.isChange ? 'Отменить' : 'Очистить'}</span>
             </button>
             <button className="modal__form-button modal__form-button_save" type="submit">
               <CheckCircledIcon />

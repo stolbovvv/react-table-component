@@ -1,17 +1,19 @@
 .modal {
   position: fixed;
+  overflow: hidden;
   inset: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
   margin: 0;
   padding: var(--space-5);
-  background-color: var(--black-a5);
   z-index: 1000;
 }
 .modal__overlay {
   position: absolute;
   inset: 0;
+  background-color: var(--black-a7);
+  backdrop-filter: blur(3px);
   z-index: -1;
 }
 .modal__dialog {
@@ -100,19 +102,34 @@
   color: var(--color);
   cursor: pointer;
 }
-.modal__form-button_reset {
+.modal__form-button_delete {
   --color: var(--red-11);
   --border-color: var(--red-6);
   --outline-color: var(--red-11);
   --background-color: var(--red-3);
+  margin-right: auto;
 }
-.modal__form-button_reset:is(:focus, :hover) {
+.modal__form-button_delete:is(:focus, :hover) {
   --border-color: var(--red-7);
   --background-color: var(--red-4);
 }
-.modal__form-button_reset:is(:active) {
+.modal__form-button_delete:is(:active) {
   --border-color: var(--red-8);
   --background-color: var(--red-5);
+}
+.modal__form-button_reset {
+  --color: var(--yellow-11);
+  --border-color: var(--yellow-6);
+  --outline-color: var(--yellow-11);
+  --background-color: var(--yellow-3);
+}
+.modal__form-button_reset:is(:focus, :hover) {
+  --border-color: var(--yellow-7);
+  --background-color: var(--yellow-4);
+}
+.modal__form-button_reset:is(:active) {
+  --border-color: var(--yellow-8);
+  --background-color: var(--yellow-5);
 }
 .modal__form-button_save {
   --color: var(--green-11);
@@ -127,4 +144,7 @@
 .modal__form-button_save:is(:active) {
   --border-color: var(--green-8);
   --background-color: var(--green-5);
+}
+.modal__form-button > svg {
+  flex: 0 0 auto;
 }

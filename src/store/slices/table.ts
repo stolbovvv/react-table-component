@@ -50,14 +50,13 @@ export const { actions, reducer } = createSlice({
       state.data.push({ ...action.payload.data, id: uuidv4() });
     },
     updateItem: (state, action: PayloadAction<{ data: TableData }>) => {
-      const update: TableData[] = state.data.map((item: TableData): TableData => {
-        if (item.id === action.payload.data.id) {
-          return action.payload.data;
-        }
+      state.data = state.data.map((item: TableData) => {
+        if (item.id === action.payload.data.id) return action.payload.data;
         return item;
       });
-
-      state.data = update;
+    },
+    removeItem: (state, action: PayloadAction<{ id: string }>) => {
+      state.data = state.data.filter((item: TableData) => item.id !== action.payload.id);
     },
   },
 });

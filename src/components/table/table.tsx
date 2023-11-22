@@ -11,16 +11,15 @@ import { useEffect } from 'react';
 
 function Table() {
   const data = useSelector(filteredDataSelector);
-  const sort = useSelector((state: { table: TableState }) => state.table.sort);
-  const cells = useSelector((state: { table: TableState }) => state.table.cells);
+  const table = useSelector((state: { table: TableState }) => state.table);
   const dispatch = useDispatch();
 
   const getSortIcon = (field: keyof TableData) => {
-    if (sort.field !== field) {
+    if (table.sort.field !== field) {
       return <CaretSortIcon />;
     } else {
-      if (sort.order === 'acs') return <CaretUpIcon />;
-      if (sort.order === 'desc') return <CaretDownIcon />;
+      if (table.sort.order === 'acs') return <CaretUpIcon />;
+      if (table.sort.order === 'desc') return <CaretDownIcon />;
     }
   };
 
@@ -40,7 +39,7 @@ function Table() {
     <section className="table">
       <div className="table__head">
         <div className="table__head-row">
-          {cells.map(
+          {table.cells.map(
             (cel: TableCel) =>
               cel.visible && (
                 <button className="table__head-cel" key={cel.name} onClick={() => handleSort(cel.name)}>
@@ -54,7 +53,7 @@ function Table() {
       <div className="table__body">
         {data.map((item: TableData) => (
           <div className="table__body-row" key={item.id} onClick={() => showModal(item)}>
-            {cells.map(
+            {table.cells.map(
               (cel: TableCel) =>
                 cel.visible && (
                   <span className="table__body-cel" key={`${cel.name}-${item.id}`}>
