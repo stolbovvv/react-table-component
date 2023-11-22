@@ -10,7 +10,7 @@ const filteredDataSelector = createSelector([getTableData, getFilterTerm], (list
     let key: keyof TableData;
 
     for (key in item) {
-      if (String(item[key]).toLowerCase().includes(term.toLowerCase())) return item;
+      if (String(item[key]).toLowerCase().includes(term.toLowerCase()) && key !== 'id') return item;
     }
   });
 });
