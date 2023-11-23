@@ -104,7 +104,12 @@ function Modal() {
                     <span>Удалить</span>
                   </button>
                 )}
-                <button className="modal__form-button modal__form-button_reset" type="button" onClick={handleReset}>
+                <button
+                  className="modal__form-button modal__form-button_reset"
+                  type="button"
+                  onClick={handleReset}
+                  disabled={!modal.isUpdate}
+                >
                   <CrossCircledIcon />
                   <span>{modal.isChange ? 'Отменить' : 'Очистить'}</span>
                 </button>

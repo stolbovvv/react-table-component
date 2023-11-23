@@ -15,6 +15,7 @@ const initialState: ModalState = {
   currentData: initialDataState,
   isOpen: false,
   isChange: false,
+  isUpdate: false,
   fields: [
     { name: 'name', type: 'text', label: 'ФИО', value: '', required: true },
     { name: 'rfid', type: 'number', label: 'RFID', value: '', required: true },
@@ -47,9 +48,11 @@ export const { actions, reducer } = createSlice({
     },
     changeValue: (state, action: PayloadAction<{ name: keyof TableData; value: string }>) => {
       state.currentData[action.payload.name] = action.payload.value;
+      state.isUpdate = true;
     },
     resetValues: (state) => {
       state.currentData = state.initialData;
+      state.isUpdate = false;
     },
   },
 });

@@ -130,6 +130,10 @@
   --border-color: var(--yellow-8);
   --background-color: var(--yellow-5);
 }
+.modal__form-button_reset:disabled {
+  opacity: 0.5;
+  filter: grayscale(0.75);
+}
 .modal__form-button_save {
   --color: var(--green-11);
   --border-color: var(--green-6);

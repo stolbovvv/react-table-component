@@ -14,6 +14,7 @@ export type ModalState = {
   initialData: TableData;
   currentData: TableData;
   isOpen: boolean;
-  fields: ModalField[];
   isChange: boolean;
+  isUpdate: boolean;
+  fields: ModalField[];
 };
