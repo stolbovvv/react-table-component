@@ -2,6 +2,7 @@ import './modal.css';
 
 import type { TableData } from 'types/table';
 import type { ModalField, ModalState } from 'types/modal';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions as modalActions } from 'store/slices/modal';
 import { actions as tableActions } from 'store/slices/table';
@@ -10,8 +11,9 @@ import { CheckCircledIcon, Cross1Icon, CrossCircledIcon, TrashIcon } from '@radi
 
 function Modal() {
   const modal = useSelector((store: { modal: ModalState }) => store.modal);
+  const modalIsOpen = useMemo(() => modal.isOpen, [modal.isOpen]);
   const dispatch = useDispatch();
-  const transition = useTransition(modal, {
+  const transition = useTransition(modalIsOpen, {
     from: {
       opacity: 0,
       backdropFilter: 'blur(0px)',
@@ -62,8 +64,8 @@ function Modal() {
   };
 
   return transition(
-    (style, modal) =>
-      modal.isOpen && (
+    (style, modalIsOpen) =>
+      modalIsOpen && (
         <div className="modal">
           <animated.div
             style={{ opacity: style.opacity, backdropFilter: style.backdropFilter }}
