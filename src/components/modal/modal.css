@@ -13,7 +13,6 @@
   position: absolute;
   inset: 0;
   background-color: var(--black-a7);
-  backdrop-filter: blur(3px);
   z-index: -1;
 }
 .modal__dialog {
