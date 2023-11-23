@@ -17,12 +17,12 @@
   border-bottom: 1px solid var(--green-6);
 }
 .table__head-cel {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5em;
-  width: 25%;
+  width: 100%;
   padding: 0.5em 1em;
   border: none;
   background-color: var(--background-color, var(--green-3));
@@ -61,8 +61,8 @@
   --background-color: var(--green-6);
 }
 .table__body-cel {
-  flex: 0 0 auto;
-  width: 25%;
+  flex: 1 1 auto;
+  width: 100%;
   padding: 0.5em 1em;
   font-size: var(--fs-2);
 }

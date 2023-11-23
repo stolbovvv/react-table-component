@@ -37,6 +37,98 @@
   outline-color: var(--green-11);
   font-size: var(--fs-2);
 }
+.panel__menu-dropdown {
+  position: relative;
+}
+.panel__menu-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.5em 1em;
+  border-radius: var(--radius-1);
+  border: 1px solid transparent;
+  background-color: var(--background-color, transparent);
+  outline-color: var(--green-11);
+  font-size: var(--fs-2);
+  font-weight: var(--fw-4);
+  color: var(--green-11);
+  cursor: pointer;
+}
+.panel__menu-dropdown-button:is(:focus, :hover) {
+  --background-color: var(--green-4);
+}
+.panel__menu-dropdown-button:is(:active) {
+  --background-color: var(--green-6);
+}
+.panel__menu-dropdown-list {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: calc(var(--space-1) + 100%);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-2);
+  border-radius: var(--radius-4);
+  border: 1px solid var(--green-6);
+  background-color: var(--green-3);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  list-style: none;
+  z-index: 100;
+}
+.panel__menu-dropdown-item {
+  display: flex;
+  font-size: var(--fs-2);
+}
+.panel__menu-dropdown-item > input {
+  width: 0;
+  height: 0;
+  position: absolute;
+  visibility: hidden;
+}
+.panel__menu-dropdown-item > label {
+  flex: 1 1 auto;
+  position: relative;
+  width: max-content;
+  padding: 0.25em 0.75em 0.25em 1.75em;
+  border-radius: var(--radius-2);
+  background-color: var(--background-color, transparent);
+  cursor: pointer;
+}
+.panel__menu-dropdown-item > label:is(:focus, :hover) {
+  --background-color: var(--green-4);
+}
+.panel__menu-dropdown-item > label:is(:active) {
+  --background-color: var(--green-6);
+}
+.panel__menu-dropdown-item > label::before {
+  content: '';
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  top: 50%;
+  left: 0.5em;
+  transform: translateY(-50%);
+  border-radius: var(--radius-1);
+  border: 1px solid var(--green-6);
+  background-color: var(--green-1);
+}
+.panel__menu-dropdown-item > label::after {
+  content: '';
+  position: absolute;
+  width: 0.75em;
+  height: calc(0.75em - 1px);
+  top: 50%;
+  left: 0.625em;
+  transform: translateY(-50%);
+  border-radius: var(--radius-1);
+}
+.panel__menu-dropdown-item > input:checked + label::after {
+  background-color: var(--green-6);
+}
+.panel__menu-dropdown-item > input:disabled + label {
+  pointer-events: none;
+  opacity: 0.5;
+}
 .panel__menu-button {
   display: flex;
   align-items: center;

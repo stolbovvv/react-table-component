@@ -1,4 +1,4 @@
-import type { TableData, TableState } from 'types/table';
+import type { TableCel, TableData, TableState } from 'types/table';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
 import { data } from 'data/data.json';
@@ -10,11 +10,11 @@ const initialState: TableState = {
     order: 'acs',
   },
   cells: [
-    { name: 'id', text: 'ID', visible: false },
-    { name: 'name', text: 'ФИО', visible: true },
-    { name: 'rfid', text: 'RFID', visible: true },
-    { name: 'phone', text: 'Телефон', visible: true },
-    { name: 'email', text: 'Электронная почта', visible: true },
+    { name: 'id', text: 'ID', visible: false, selected: false },
+    { name: 'name', text: 'ФИО', visible: true, selected: true },
+    { name: 'rfid', text: 'RFID', visible: true, selected: true },
+    { name: 'phone', text: 'Телефон', visible: true, selected: true },
+    { name: 'email', text: 'Электронная почта', visible: true, selected: true },
   ],
 };
 
@@ -57,6 +57,12 @@ export const { actions, reducer } = createSlice({
     },
     removeItem: (state, action: PayloadAction<{ id: string }>) => {
       state.data = state.data.filter((item: TableData) => item.id !== action.payload.id);
+    },
+    changeVisibleCel: (state, action: PayloadAction<{ name: keyof TableData }>) => {
+      state.cells = state.cells.map((cel: TableCel) => {
+        if (cel.name === action.payload.name) return { ...cel, visible: !cel.visible };
+        return cel;
+      });
     },
   },
 });

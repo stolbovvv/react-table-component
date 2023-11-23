@@ -12,6 +12,7 @@ export type TableCel = {
   name: keyof TableData;
   text: string;
   visible: boolean;
+  selected: boolean;
 };
 
 // Table state type
