@@ -1,10 +1,10 @@
 // Table data type
 export type TableData = {
   id: string;
-  rfid: string;
   name: string;
   phone: string;
   email: string;
+  personal: string;
 };
 
 // Table cel type

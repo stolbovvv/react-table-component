@@ -5,9 +5,9 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 const initialDataState: TableData = {
   id: '',
   name: '',
-  rfid: '',
   phone: '',
   email: '',
+  personal: '',
 };
 
 const initialState: ModalState = {
@@ -18,7 +18,7 @@ const initialState: ModalState = {
   isUpdate: false,
   fields: [
     { name: 'name', type: 'text', label: 'ФИО', value: '', required: true },
-    { name: 'rfid', type: 'number', label: 'RFID', value: '', required: true },
+    { name: 'personal', type: 'number', label: 'Личный номер', value: '', required: true },
     { name: 'phone', type: 'tel', label: 'Телефон', value: '', required: false },
     { name: 'email', type: 'email', label: 'Электронная почта', value: '', required: false },
   ],

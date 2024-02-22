@@ -9,7 +9,7 @@ function Footer() {
           stolbovvv
         </a>
       </p>
-      <p className="footer__text">Fort Monitor Справочник | React | Redux | 2023</p>
+      <p className="footer__text">React Table Component | React | Redux | 2023</p>
     </footer>
   );
 }

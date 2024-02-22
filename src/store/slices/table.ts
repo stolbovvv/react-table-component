@@ -12,9 +12,9 @@ const initialState: TableState = {
   cells: [
     { name: 'id', text: 'ID', visible: false, selected: false },
     { name: 'name', text: 'ФИО', visible: true, selected: true },
-    { name: 'rfid', text: 'RFID', visible: true, selected: true },
     { name: 'phone', text: 'Телефон', visible: true, selected: true },
     { name: 'email', text: 'Электронная почта', visible: true, selected: true },
+    { name: 'personal', text: 'Личный номер', visible: true, selected: true },
   ],
 };
 
